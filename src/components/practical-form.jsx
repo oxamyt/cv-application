@@ -1,10 +1,15 @@
+import "../styles/forms.css";
+
 function PracticalExperienceForm({ practicalValue, setPracticalValue }) {
   return (
-    <div className="practical-form">
-      <h1 className="heading-text">Experience</h1>
-      <label>Company Name</label>
+    <form className="practical form">
+      <div className="heading-practical">
+        <h1 className="heading text">Experience</h1>
+      </div>
+      <label className="input-label">Company Name</label>
       <input
         type="text"
+        className="input-form"
         value={practicalValue.companyName}
         onChange={(event) =>
           setPracticalValue({
@@ -13,9 +18,10 @@ function PracticalExperienceForm({ practicalValue, setPracticalValue }) {
           })
         }
       ></input>
-      <label>Position Title</label>
+      <label className="input-label">Position Title</label>
       <input
         type="text"
+        className="input-form"
         value={practicalValue.positionTitle}
         onChange={(event) =>
           setPracticalValue({
@@ -24,30 +30,39 @@ function PracticalExperienceForm({ practicalValue, setPracticalValue }) {
           })
         }
       ></input>
-      <label>Start date:</label>
-      <input
-        value={practicalValue.date.start}
-        type="date"
-        onChange={(event) =>
-          setPracticalValue({
-            ...practicalValue,
-            date: { ...practicalValue.date, start: event.target.value },
-          })
-        }
-      ></input>
-      <label>End date:</label>
-      <input
-        value={practicalValue.date.end}
-        type="date"
-        onChange={(event) =>
-          setPracticalValue({
-            ...practicalValue,
-            date: { ...practicalValue.date, end: event.target.value },
-          })
-        }
-      ></input>
-      <label>Description:</label>
+      <div className="dates">
+        <div className="date-start">
+          <label className="input-label">Start date</label>
+          <input
+            value={practicalValue.date.start}
+            type="text"
+            className="input-form"
+            onChange={(event) =>
+              setPracticalValue({
+                ...practicalValue,
+                date: { ...practicalValue.date, start: event.target.value },
+              })
+            }
+          ></input>
+        </div>
+        <div className="date-end">
+          <label className="input-label">End date</label>
+          <input
+            value={practicalValue.date.end}
+            type="text"
+            className="input-form"
+            onChange={(event) =>
+              setPracticalValue({
+                ...practicalValue,
+                date: { ...practicalValue.date, end: event.target.value },
+              })
+            }
+          ></input>
+        </div>
+      </div>
+      <label className="input-label">Description</label>
       <textarea
+        className="input-form"
         value={practicalValue.description}
         onChange={(event) =>
           setPracticalValue({
@@ -56,7 +71,7 @@ function PracticalExperienceForm({ practicalValue, setPracticalValue }) {
           })
         }
       ></textarea>
-    </div>
+    </form>
   );
 }
 
