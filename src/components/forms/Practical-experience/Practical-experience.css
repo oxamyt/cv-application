@@ -1,0 +1,71 @@
+.practical-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f9fafb;
+  padding: 1.6rem;
+  border-radius: 15px;
+  width: 50%;
+  box-shadow: 10px 10px 37px 1px rgba(0, 0, 0, 0.62);
+}
+
+.practical-form .input-group,
+.practical-heading {
+  padding: 0.5rem;
+}
+
+.practical-form .input-form {
+  font-size: 1.1rem;
+  border-radius: 10px;
+  background-color: #e2e8f0;
+  line-height: 2;
+  padding-left: 5px;
+  width: 95%;
+  outline: none;
+  border: 2px solid transparent;
+  color: #333333;
+}
+
+.practical-form .input-form:focus {
+  transition: 0.3s;
+  border: 2px solid #22c55e;
+}
+
+.practical-form .input-label {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #222222;
+}
+
+.practical-form .dates {
+  display: flex;
+}
+
+.practical-form .dates .input-form {
+  width: 90%;
+}
+
+.practical-form .button {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.5rem;
+}
+
+.practical-form .submit-btn {
+  border: 0;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 1.6rem;
+  transition: 0.5s;
+  color: #f9fafb;
+  background-color: #222222;
+}
+
+.practical-form .submit-btn:hover {
+  transition: 0.5s;
+  color: #f9fafb;
+  background-color: #1d4ed8;
+}

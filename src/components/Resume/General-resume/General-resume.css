@@ -1,0 +1,22 @@
+.general-section {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to right, #3730a3, #075985);
+  color: #f9fafb;
+  align-items: center;
+  padding: 2rem;
+}
+
+.general-section .name {
+  font-weight: bold;
+}
+
+.general-section .contacts {
+  display: flex;
+  gap: 3rem;
+}
+
+.general-section .contacts .email,
+.phone {
+  font-weight: 400;
+}
