@@ -4,6 +4,7 @@ import "./Practical-experience.css";
 function PracticalExperienceForm({
   practicalExperienceList,
   setPracticalExperienceList,
+  setShowForm,
 }) {
   const [practicalExperienceValue, setPracticalExperienceValue] = useState({
     company: "",
@@ -21,6 +22,7 @@ function PracticalExperienceForm({
       position: "",
       date: { start: "", end: "" },
     });
+    setShowForm(false);
   }
 
   return (
@@ -88,6 +90,13 @@ function PracticalExperienceForm({
         </div>
       </div>
       <div className="button">
+        <button
+          className="cancel-btn"
+          type="button"
+          onClick={() => setShowForm(false)}
+        >
+          Cancel
+        </button>
         <button
           type="button"
           className="submit-btn"

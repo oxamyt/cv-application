@@ -48,20 +48,37 @@
 .education-form .button {
   display: flex;
   justify-content: flex-end;
-  padding-top: 0.5rem;
+  padding: 0.5rem;
+  gap: 20px;
 }
 
 .education-form .submit-btn {
+  margin: 0;
   border: 0;
   padding: 1rem;
   border-radius: 10px;
   font-size: 1.3rem;
   font-weight: bold;
   cursor: pointer;
-  margin-right: 1.6rem;
   transition: 0.5s;
   color: #f9fafb;
   background-color: #222222;
+}
+
+.cancel-btn {
+  border: 0;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s;
+  color: #f9fafb;
+  background-color: #5a5858;
+}
+
+.cancel-btn:hover {
+  background-color: #928e8e;
 }
 
 .education-form .submit-btn:hover {

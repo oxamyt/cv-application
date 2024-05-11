@@ -12,7 +12,8 @@ function EducationResume({ educationInfoList }) {
         <div key={index} className="education">
           <div className="dates">
             <p>
-              {educationValue.date.start} - {educationValue.date.end}
+              {educationValue.date.start &&
+                educationValue.date.start + " - " + educationValue.date.end}
             </p>
           </div>
           <div className="education-info">

@@ -1,6 +1,6 @@
 import GeneralForm from "./General-form/General-form";
-import EducationForm from "./Education-form/Education-form";
-import PracticalExperienceForm from "./Practical-experience/Practical-experience-form";
+import DisplayEducations from "../displaySections/DisplayEducations/DisplayEducations";
+import DisplayExperience from "../displaySections/DisplayPracticalExperience/DisplayPracticalExperience";
 import "./Forms.css";
 
 function Forms({
@@ -17,14 +17,14 @@ function Forms({
         generalInfo={generalInfo}
         setGeneralInfo={setGeneralInfo}
       ></GeneralForm>
-      <EducationForm
+      <DisplayEducations
         educationInfoList={educationInfoList}
         setEducationInfoList={setEducationInfoList}
-      ></EducationForm>
-      <PracticalExperienceForm
+      ></DisplayEducations>
+      <DisplayExperience
         practicalExperienceList={practicalExperienceList}
         setPracticalExperienceList={setPracticalExperienceList}
-      ></PracticalExperienceForm>
+      ></DisplayExperience>
     </section>
   );
 }

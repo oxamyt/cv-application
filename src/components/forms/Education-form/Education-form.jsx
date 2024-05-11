@@ -1,7 +1,11 @@
 import { useState } from "react";
 import "./Education-form.css";
 
-function EducationForm({ educationInfoList, setEducationInfoList }) {
+function EducationForm({
+  educationInfoList,
+  setEducationInfoList,
+  setShowForm,
+}) {
   const [educationValue, setEducationValue] = useState({
     school: "",
     degree: "",
@@ -11,6 +15,7 @@ function EducationForm({ educationInfoList, setEducationInfoList }) {
   function addEducationToList() {
     setEducationInfoList([...educationInfoList, educationValue]);
     setEducationValue({ school: "", degree: "", date: { start: "", end: "" } });
+    setShowForm(false);
   }
 
   return (
@@ -69,6 +74,13 @@ function EducationForm({ educationInfoList, setEducationInfoList }) {
         </div>
       </div>
       <div className="button">
+        <button
+          className="cancel-btn"
+          type="button"
+          onClick={() => setShowForm(false)}
+        >
+          Cancel
+        </button>
         <button
           type="button"
           className="submit-btn"
