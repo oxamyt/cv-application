@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Practical-experience.css";
 
 function PracticalExperienceForm({
   practicalExperienceList,
   setPracticalExperienceList,
   setShowForm,
+  practicalEditMode,
+  setPracticalEditMode,
 }) {
   const [practicalExperienceValue, setPracticalExperienceValue] = useState({
     company: "",
@@ -12,17 +14,44 @@ function PracticalExperienceForm({
     date: { start: "", end: "" },
   });
 
-  function addPracticalExperienceToList() {
-    setPracticalExperienceList([
-      ...practicalExperienceList,
-      practicalExperienceValue,
-    ]);
-    setPracticalExperienceValue({
-      company: "",
-      position: "",
-      date: { start: "", end: "" },
-    });
-    setShowForm(false);
+  useEffect(() => {
+    if (practicalEditMode.status) {
+      const editedValue = practicalExperienceList[practicalEditMode.index];
+      setPracticalExperienceValue(editedValue);
+      setPracticalEditMode({ ...practicalEditMode, status: false });
+    }
+  }, [
+    practicalEditMode.status,
+    practicalEditMode.index,
+    practicalExperienceList,
+    setPracticalEditMode,
+  ]);
+
+  function handlePracticalExperienceToList() {
+    if (practicalEditMode.index !== null) {
+      const updatedList = practicalExperienceList.map((item, index) =>
+        index === practicalEditMode.index ? practicalExperienceValue : item
+      );
+      setPracticalExperienceList(updatedList);
+      setPracticalExperienceValue({
+        company: "",
+        position: "",
+        date: { start: "", end: "" },
+      });
+      setPracticalEditMode({ status: false, index: null });
+      setShowForm(false);
+    } else {
+      setPracticalExperienceList([
+        ...practicalExperienceList,
+        practicalExperienceValue,
+      ]);
+      setPracticalExperienceValue({
+        company: "",
+        position: "",
+        date: { start: "", end: "" },
+      });
+      setShowForm(false);
+    }
   }
 
   return (
@@ -100,7 +129,7 @@ function PracticalExperienceForm({
         <button
           type="button"
           className="submit-btn"
-          onClick={addPracticalExperienceToList}
+          onClick={handlePracticalExperienceToList}
         >
           Save
         </button>

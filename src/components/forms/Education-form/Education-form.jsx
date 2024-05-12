@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Education-form.css";
 
 function EducationForm({
   educationInfoList,
   setEducationInfoList,
   setShowForm,
+  educationEditMode,
+  setEducationEditMode,
 }) {
   const [educationValue, setEducationValue] = useState({
     school: "",
@@ -12,10 +14,41 @@ function EducationForm({
     date: { start: "", end: "" },
   });
 
-  function addEducationToList() {
-    setEducationInfoList([...educationInfoList, educationValue]);
-    setEducationValue({ school: "", degree: "", date: { start: "", end: "" } });
-    setShowForm(false);
+  useEffect(() => {
+    if (educationEditMode.status) {
+      const editedValue = educationInfoList[educationEditMode.index];
+      setEducationValue(editedValue);
+      setEducationEditMode({ ...educationEditMode, status: false });
+    }
+  }, [
+    educationEditMode.status,
+    educationEditMode.index,
+    educationInfoList,
+    setEducationEditMode,
+  ]);
+
+  function handleEducationToList() {
+    if (educationEditMode.index !== null) {
+      const updatedList = educationInfoList.map((item, index) =>
+        index === educationEditMode.index ? educationValue : item
+      );
+      setEducationInfoList(updatedList);
+      setEducationValue({
+        school: "",
+        degree: "",
+        date: { start: "", end: "" },
+      });
+      setEducationEditMode({ status: false, index: null });
+      setShowForm(false);
+    } else {
+      setEducationInfoList([...educationInfoList, educationValue]);
+      setEducationValue({
+        school: "",
+        degree: "",
+        date: { start: "", end: "" },
+      });
+      setShowForm(false);
+    }
   }
 
   return (
@@ -84,7 +117,7 @@ function EducationForm({
         <button
           type="button"
           className="submit-btn"
-          onClick={addEducationToList}
+          onClick={handleEducationToList}
         >
           Save
         </button>

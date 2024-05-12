@@ -2,13 +2,23 @@ import "./DisplayEducations.css";
 import EducationForm from "../../forms/Education-form/Education-form";
 import { useState } from "react";
 
-function DisplayEducations({ educationInfoList, setEducationInfoList }) {
+function DisplayEducations({
+  educationInfoList,
+  setEducationInfoList,
+  educationEditMode,
+  setEducationEditMode,
+}) {
   const [showForm, setShowForm] = useState(false);
 
   function removeEducation(removeIndex) {
     setEducationInfoList(
       educationInfoList.filter((_, index) => index !== removeIndex)
     );
+  }
+
+  function handleEdit(editIndex) {
+    setEducationEditMode({ status: true, index: editIndex });
+    setShowForm(true);
   }
 
   return (
@@ -18,6 +28,8 @@ function DisplayEducations({ educationInfoList, setEducationInfoList }) {
           educationInfoList={educationInfoList}
           setEducationInfoList={setEducationInfoList}
           setShowForm={setShowForm}
+          educationEditMode={educationEditMode}
+          setEducationEditMode={setEducationEditMode}
         />
       ) : (
         <section className="education-display">
@@ -28,13 +40,22 @@ function DisplayEducations({ educationInfoList, setEducationInfoList }) {
             {educationInfoList.map((educationValue, index) => (
               <div key={index} className="education-display-div">
                 <h2 className="education-school">{educationValue.school}</h2>
-                <button
-                  type="button"
-                  className="remove-btn"
-                  onClick={() => removeEducation(index)}
-                >
-                  Delete
-                </button>
+                <div className="btns">
+                  <button
+                    type="button"
+                    className="edit-btn"
+                    onClick={() => handleEdit(index)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    className="remove-btn"
+                    onClick={() => removeEducation(index)}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             ))}
             <div className="add-education">
